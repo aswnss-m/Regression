@@ -80,6 +80,19 @@ plt.xlabel('Experience')
 plt.ylabel('Salary')
 plt.legend()
 plt.show()
+from sklearn import model_selection,linear_model
+
+exp_train , exp_test,salary_train , salary_test = model_selection.train_test_split(X,Y)
+reg = linear_model.LinearRegression()
+reg.fit(exp_train, salary_train)
+
+print("From Calculation")
+print("Slope = ", m)
+print("Intercept = ", c)
+
+print("From Linear Regression")
+print("Slope = ", reg.coef_)
+print("intercept  = ", reg.intercept_)
 
 
 

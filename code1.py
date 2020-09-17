@@ -55,3 +55,53 @@ plt.plot(ages_test,reg.predict(ages_test))
 plt.xlabel("Ages")
 plt.ylabel("Net Worth")
 plt.show()
+"""
+import numpy as np
+import random
+
+random.seed(10)
+np.random.seed(10)
+
+
+ages = [random.randint(10,89) for i in range(10,89)]
+#the above code is the short form of the below one
+# ages =[]
+# for x in range(90):
+# 	ages.append( random.randint(10,89) )
+
+net_worths =[ m * 8.78  + abs(np.random.normal(scale = 20.) for m in ages) ]
+
+#This is the expansion of the above code
+# net_worths =[]
+# for m in ages:
+# 	net_worths.append(8.78*m + abs(np.random.normal(scale=20.)))
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+ages_train,ages_test,net_worths_train,net_worths_test = train_test_split(ages,net_worths)
+
+reg = LinearRegression()
+
+reg.fit(ages_train, net_worths_train)
+
+slope = reg.coef_
+intercept = reg.intercept_
+
+print("The actuall slope : 8.78")
+print("The calculated slope : ", slope)
+print("The intercept : ", intercept)
+
+testing_score = reg.score(ages_test, net_worths_test)
+training_score = reg.score(ages_train, net_worths_train)
+
+print("The scores of the ")
+print("Testing data score ", testing_score)
+print("Training  data Score : ", training_score)
+
+
+
+import matplotlib.pyplot as plt
+
+plt.scatter(ages, net_worths,)
+"""
